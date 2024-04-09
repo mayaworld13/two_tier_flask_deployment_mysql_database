@@ -2,7 +2,7 @@ version: '3'
 services:
   
   backend:
-    image: mayaworld13/flask:latest
+    image: mayaworld13/flaskapp:latest
     ports:
       - "5000:5000"
     environment:
