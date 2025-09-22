@@ -20,12 +20,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install pytest pytest-cov
 
-      - name: Run Unit Tests
+      - name: Run Unit Tests with Coverage
         run: |
-          pytest --maxfail=1 --disable-warnings -q
+          pytest --maxfail=1 --disable-warnings --cov=. --cov-report=xml
 
-      # 🔍 SonarQube Analysis
+      # 🔍 SonarQube Analysis (includes coverage)
       - name: SonarQube Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
@@ -50,3 +51,5 @@ jobs:
           command: test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+ 
